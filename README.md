@@ -1,91 +1,100 @@
-# Markdown Converter App
+# MarkDown Converter App
 
-Una aplicación React modularizada que replica el diseño y funcionalidades del archivo HTML original para convertir archivos a formato Markdown usando Microsoft MarkItDown.
+A modularized React application that replicates the design and functionality of the original HTML file to convert files to Markdown format using Microsoft MarkItDown.
 
-## Estructura del Proyecto
+## Project Structure
 
 ```
 src/
-├── components/           # Componentes React modularizados
-│   ├── Container/       # Contenedor principal
-│   ├── Header/          # Encabezado con título y subtítulo
-│   ├── UploadArea/      # Área de carga con drag & drop
-│   ├── FileList/        # Lista de archivos seleccionados
-│   ├── SupportedFormats/ # Información de formatos soportados
-│   └── index.ts         # Exportaciones de componentes
+├── components/           # Modularized React components
+│   ├── Container/       # Main container
+│   ├── Header/          # Header with title and subtitle
+│   ├── UploadArea/      # Upload area with drag & drop
+│   ├── FileList/        # Selected files list
+│   ├── SupportedFormats/ # Supported formats information
+│   └── index.ts         # Component exports
 ├── hooks/               # Custom hooks
-│   └── useFileUpload.ts # Hook para manejo de archivos
-├── services/            # Servicios para API
-│   └── api.ts           # Funciones para comunicación con backend
-├── styles/              # Estilos globales
-│   └── global.css       # CSS global de la aplicación
-├── App.tsx              # Componente principal
-└── main.tsx             # Punto de entrada
+│   └── useFileUpload.ts # File handling hook
+├── services/            # API services
+│   └── api.ts           # Backend communication functions
+├── styles/              # Global styles
+│   └── global.css       # Application global CSS
+├── App.tsx              # Main component
+└── main.tsx             # Entry point
 ```
 
-## Configuración
+## Configuration
 
-### Variables de Entorno
+### Environment Variables
 
-Crea un archivo `.env` en la raíz del proyecto:
+Create a `.env` file in the project root:
 
 ```
-VITE_API_BASE_URL=http://localhost:8000
+VITE_API_BASE_URL=http://localhost:5001
 ```
 
-### Instalación y Ejecución
+### Installation and Execution
 
 ```bash
-# Instalar dependencias
+# Install dependencies
 npm install
 
-# Ejecutar en desarrollo
+# Run in development
 npm run dev
 
-# Construir para producción
+# Build for production
 npm run build
 ```
 
-## Funcionalidades
+## Features
 
-- ✅ Drag & drop de archivos
-- ✅ Selección múltiple de archivos
-- ✅ Barra de progreso durante la conversión
-- ✅ Lista de archivos seleccionados
-- ✅ Información de formatos soportados
-- ✅ Descarga automática de resultados
-- ✅ Diseño responsive y moderno
+- ✅ Drag & drop files
+- ✅ Multiple file selection
+- ✅ Progress bar during conversion
+- ✅ Selected files list
+- ✅ Supported formats information
+- ✅ Automatic result download
+- ✅ Responsive and modern design
 
-## Componentes
+## Components
 
 ### Container
-Contenedor principal con estilos de tarjeta.
+Main container with card styling and two-column layout.
 
 ### Header
-Encabezado con título y descripción de la aplicación.
+Header with title and application description featuring key benefits.
 
 ### UploadArea
-Área de carga con funcionalidad de drag & drop, selección de archivos y botón de envío.
+Upload area with drag & drop functionality, file selection, and submit button.
 
 ### FileList
-Muestra la lista de archivos seleccionados con sus tamaños.
+Displays selected files list with sizes and individual remove options.
 
 ### SupportedFormats
-Información detallada sobre los formatos de archivo soportados.
+Detailed information about supported file formats organized by categories.
 
 ## Hooks
 
 ### useFileUpload
-Custom hook que maneja:
-- Estado de archivos seleccionados
-- Estado de carga y progreso
-- Comunicación con la API
-- Descarga de resultados
+Custom hook that handles:
+- Selected files state
+- Upload state and progress
+- API communication
+- Result downloads
+- File management (add/remove)
 
 ## API
 
-La aplicación se comunica con un backend Python que debe estar ejecutándose en el puerto configurado en `VITE_API_BASE_URL`.
+The application communicates with a Python backend that should be running on the port configured in `VITE_API_BASE_URL`.
 
 ### Endpoint
 
-- `POST /upload` - Recibe archivos y devuelve el resultado convertido
+- `POST /upload` - Receives files and returns converted result
+
+## Design Features
+
+- **Modern UI**: Glass morphism effects and gradients
+- **Responsive**: Adapts to any screen size
+- **Intuitive**: Clear visual flow and user guidance
+- **Accessible**: Good contrast ratios and keyboard navigation
+- **No Scroll**: Single-view interface with optimized layout
