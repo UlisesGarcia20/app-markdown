@@ -10,11 +10,13 @@ function App() {
     selectedFiles,
     isUploading,
     progress,
+    showSuccess,
+    downloadedFileName,
     handleFilesSelected,
     handleRemoveFile,
     handleClearAll,
-    handleUpload,
-    clearFileInput
+    handleNewConversion,
+    handleUpload
   } = useFileUpload();
 
   const mainContent = (
@@ -26,14 +28,16 @@ function App() {
         isUploading={isUploading}
         progress={progress}
         selectedFiles={selectedFiles}
-        onClearInput={clearFileInput}
+        showSuccess={showSuccess}
+        downloadedFileName={downloadedFileName}
+        onNewConversion={handleNewConversion}
       />
     </>
   );
 
   const sidebar = (
     <>
-      {selectedFiles.length > 0 && (
+      {selectedFiles.length > 0 && !showSuccess && (
         <FileList 
           files={selectedFiles} 
           onRemoveFile={handleRemoveFile}

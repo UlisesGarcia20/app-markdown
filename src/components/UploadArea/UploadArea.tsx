@@ -7,10 +7,21 @@ interface UploadAreaProps {
   isUploading: boolean;
   progress: number;
   selectedFiles: File[];
-  onClearInput: () => void;
+  showSuccess: boolean;
+  downloadedFileName: string;
+  onNewConversion: () => void;
 }
 
-export const UploadArea = ({ onFilesSelected, onSubmit, isUploading, progress, selectedFiles, onClearInput }: UploadAreaProps) => {
+export const UploadArea = ({ 
+  onFilesSelected, 
+  onSubmit, 
+  isUploading, 
+  progress, 
+  selectedFiles, 
+  showSuccess, 
+  downloadedFileName, 
+  onNewConversion
+}: UploadAreaProps) => {
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -46,20 +57,33 @@ export const UploadArea = ({ onFilesSelected, onSubmit, isUploading, progress, s
     }
   };
 
-  // Clear input when files are cleared
-  const clearFileInput = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.value = '';
-    }
-    onClearInput();
-  };
-
   const getButtonText = () => {
     if (isUploading) return 'Converting...';
     if (selectedFiles.length === 0) return 'Select files to convert';
     if (selectedFiles.length === 1) return 'Convert file';
     return `Convert ${selectedFiles.length} files`;
   };
+
+  if (showSuccess) {
+    return (
+      <div className="upload-area success-state">
+        <div className="upload-content">
+          <span className="success-icon">✅</span>
+          <div className="success-text">Conversion Successful!</div>
+          <div className="success-subtext">
+            Your file "{downloadedFileName}" has been downloaded
+          </div>
+          <button 
+            type="button" 
+            className="new-conversion-btn"
+            onClick={onNewConversion}
+          >
+            Convert New Files
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit}>

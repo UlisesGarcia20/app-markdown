@@ -5,10 +5,13 @@ export const useFileUpload = () => {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [isUploading, setIsUploading] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [downloadedFileName, setDownloadedFileName] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFilesSelected = (files: FileList) => {
     setSelectedFiles(Array.from(files));
+    setShowSuccess(false);
   };
 
   const handleRemoveFile = (index: number) => {
@@ -17,6 +20,14 @@ export const useFileUpload = () => {
 
   const handleClearAll = () => {
     setSelectedFiles([]);
+    setShowSuccess(false);
+    clearFileInput();
+  };
+
+  const handleNewConversion = () => {
+    setSelectedFiles([]);
+    setShowSuccess(false);
+    setProgress(0);
     clearFileInput();
   };
 
@@ -34,6 +45,7 @@ export const useFileUpload = () => {
 
     setIsUploading(true);
     setProgress(0);
+    setShowSuccess(false);
 
     // Simulate progress
     const progressInterval = setInterval(() => {
@@ -51,24 +63,23 @@ export const useFileUpload = () => {
       setProgress(100);
 
       // Download the result
+      const fileName = files.length === 1 ? 
+        `${files[0].name.split('.')[0]}.md` : 
+        'converted_files.zip';
+      
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = files.length === 1 ? 
-        `${files[0].name.split('.')[0]}.md` : 
-        'converted_files.zip';
+      a.download = fileName;
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
 
-      // Reset after success
-      setTimeout(() => {
-        setIsUploading(false);
-        setProgress(0);
-        setSelectedFiles([]);
-        clearFileInput(); // Clear input after successful upload
-      }, 1000);
+      // Show success message
+      setDownloadedFileName(fileName);
+      setIsUploading(false);
+      setShowSuccess(true);
 
     } catch (error) {
       clearInterval(progressInterval);
@@ -82,10 +93,13 @@ export const useFileUpload = () => {
     selectedFiles,
     isUploading,
     progress,
+    showSuccess,
+    downloadedFileName,
     fileInputRef,
     handleFilesSelected,
     handleRemoveFile,
     handleClearAll,
+    handleNewConversion,
     handleUpload,
     clearFileInput
   };

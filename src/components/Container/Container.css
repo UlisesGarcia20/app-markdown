@@ -1,11 +1,11 @@
 .container {
-  background: rgba(255, 255, 255, 0.95);
+  background: #DBE5F0;
   backdrop-filter: blur(20px);
   border-radius: 20px;
   box-shadow: 
     0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid #939598;
   width: 100%;
   max-width: 1200px;
   height: 100vh;
@@ -24,8 +24,8 @@
 }
 
 .sidebar {
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  border-left: 1px solid #e2e8f0;
+  background: #F2F2F2;
+  border-left: 1px solid #939598;
   padding: 24px;
   display: flex;
   flex-direction: column;
