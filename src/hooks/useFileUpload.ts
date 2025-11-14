@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { uploadFiles } from '../services/api';
 
 export const useFileUpload = () => {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [isUploading, setIsUploading] = useState(false);
   const [progress, setProgress] = useState(0);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFilesSelected = (files: FileList) => {
     setSelectedFiles(Array.from(files));
@@ -16,6 +17,13 @@ export const useFileUpload = () => {
 
   const handleClearAll = () => {
     setSelectedFiles([]);
+    clearFileInput();
+  };
+
+  const clearFileInput = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
   };
 
   const handleUpload = async (files: FileList) => {
@@ -59,6 +67,7 @@ export const useFileUpload = () => {
         setIsUploading(false);
         setProgress(0);
         setSelectedFiles([]);
+        clearFileInput(); // Clear input after successful upload
       }, 1000);
 
     } catch (error) {
@@ -73,9 +82,11 @@ export const useFileUpload = () => {
     selectedFiles,
     isUploading,
     progress,
+    fileInputRef,
     handleFilesSelected,
     handleRemoveFile,
     handleClearAll,
-    handleUpload
+    handleUpload,
+    clearFileInput
   };
 };

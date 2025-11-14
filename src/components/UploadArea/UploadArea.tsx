@@ -7,9 +7,10 @@ interface UploadAreaProps {
   isUploading: boolean;
   progress: number;
   selectedFiles: File[];
+  onClearInput: () => void;
 }
 
-export const UploadArea = ({ onFilesSelected, onSubmit, isUploading, progress, selectedFiles }: UploadAreaProps) => {
+export const UploadArea = ({ onFilesSelected, onSubmit, isUploading, progress, selectedFiles, onClearInput }: UploadAreaProps) => {
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -43,6 +44,14 @@ export const UploadArea = ({ onFilesSelected, onSubmit, isUploading, progress, s
       selectedFiles.forEach(file => fileList.items.add(file));
       onSubmit(fileList.files);
     }
+  };
+
+  // Clear input when files are cleared
+  const clearFileInput = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+    onClearInput();
   };
 
   const getButtonText = () => {

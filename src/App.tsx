@@ -13,7 +13,8 @@ function App() {
     handleFilesSelected,
     handleRemoveFile,
     handleClearAll,
-    handleUpload
+    handleUpload,
+    clearFileInput
   } = useFileUpload();
 
   const mainContent = (
@@ -25,6 +26,7 @@ function App() {
         isUploading={isUploading}
         progress={progress}
         selectedFiles={selectedFiles}
+        onClearInput={clearFileInput}
       />
     </>
   );
