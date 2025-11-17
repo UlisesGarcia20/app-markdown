@@ -11,8 +11,6 @@ function App() {
         showSuccess,
         downloadedFileName,
         handleFilesSelected,
-        handleRemoveFile,
-        handleClearAll,
         handleNewConversion,
         handleUpload,
     } = useFileUpload();
