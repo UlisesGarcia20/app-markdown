@@ -17,8 +17,6 @@ function App() {
 
     return (
         <div className="app-root">
-            <Header />
-
             <main className="landing-main">
                 {/* HERO */}
                 <section className="hero">
@@ -57,13 +55,6 @@ function App() {
                     )}
                 </section>
             </main>
-
-            <footer className="landing-footer">
-                <span className="footer-logo">MarkConvert</span>
-                <span className="footer-copy">
-                    © 2025 MarkConvert. All rights reserved.
-                </span>
-            </footer>
         </div>
     );
 }
