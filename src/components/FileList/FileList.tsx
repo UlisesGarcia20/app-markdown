@@ -1,3 +1,4 @@
+// components/FileList/FileList.jsx
 import './FileList.css';
 
 interface FileListProps {
@@ -9,15 +10,30 @@ interface FileListProps {
 const getFileIcon = (fileName: string) => {
   const ext = fileName.split('.').pop()?.toLowerCase();
   switch (ext) {
-    case 'pdf': return '📄';
-    case 'docx': case 'doc': return '📝';
-    case 'pptx': case 'ppt': return '📊';
-    case 'xlsx': case 'xls': return '📈';
-    case 'png': case 'jpg': case 'jpeg': case 'gif': return '🖼️';
-    case 'txt': return '📃';
-    case 'html': return '🌐';
-    case 'json': return '📋';
-    default: return '📁';
+    case 'pdf':
+      return '📄';
+    case 'docx':
+    case 'doc':
+      return '📝';
+    case 'pptx':
+    case 'ppt':
+      return '📊';
+    case 'xlsx':
+    case 'xls':
+      return '📈';
+    case 'png':
+    case 'jpg':
+    case 'jpeg':
+    case 'gif':
+      return '🖼️';
+    case 'txt':
+      return '📃';
+    case 'html':
+      return '🌐';
+    case 'json':
+      return '📋';
+    default:
+      return '📁';
   }
 };
 
@@ -33,13 +49,14 @@ export const FileList = ({ files, onRemoveFile, onClearAll }: FileListProps) => 
   if (files.length === 0) return null;
 
   return (
-    <div className="file-list">
+    <div className="filelist-card">
       <div className="file-list-header">
         <h4>Selected files</h4>
         <button className="clear-all-btn" onClick={onClearAll}>
           Clear all
         </button>
       </div>
+
       <div className="selected-files">
         {files.map((file, index) => (
           <div key={index} className="file-item">
@@ -47,19 +64,18 @@ export const FileList = ({ files, onRemoveFile, onClearAll }: FileListProps) => 
               <span className="file-icon">{getFileIcon(file.name)}</span>
               <div className="file-details">
                 <span className="file-name">{file.name}</span>
-                <span className="file-size">{formatFileSize(file.size)}</span>
+                <span className="file-size">
+                  {formatFileSize(file.size)} • Ready
+                </span>
               </div>
             </div>
-            <div className="file-actions">
-              <div className="file-status">Ready</div>
-              <button 
-                className="remove-file-btn" 
-                onClick={() => onRemoveFile(index)}
-                title="Remove file"
-              >
-                ✕
-              </button>
-            </div>
+            <button
+              className="remove-file-btn"
+              onClick={() => onRemoveFile(index)}
+              title="Remove file"
+            >
+              ✕
+            </button>
           </div>
         ))}
       </div>

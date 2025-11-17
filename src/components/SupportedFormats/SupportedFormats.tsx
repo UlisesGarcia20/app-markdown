@@ -1,56 +1,61 @@
+// components/SupportedFormats/SupportedFormats.jsx
 import './SupportedFormats.css';
 
 export const SupportedFormats = () => {
   return (
-    <div className="supported">
-      <h3>
-        <span>📋</span>
-        Supported File Formats
-      </h3>
-      
+    <div className="supported-card">
+      <div className="supported-header">
+        <span className="supported-icon">📋</span>
+        <div>
+          <h3 className="supported-title">Supported File Formats</h3>
+          <p className="supported-subtitle">
+            Works out-of-the-box with the formats you use every day.
+          </p>
+        </div>
+      </div>
+
       <div className="supported-grid">
         <div className="format-category">
-          <h4>📄 Documents</h4>
+          <h4>Documents</h4>
           <ul className="format-list">
-            <li className="format-item">PDF files (.pdf)</li>
-            <li className="format-item">Word documents (.docx)</li>
-            <li className="format-item">Text files (.txt)</li>
-            <li className="format-item">Rich Text (.rtf)</li>
+            <li>PDF files (.pdf)</li>
+            <li>Word documents (.docx)</li>
+            <li>Text files (.txt)</li>
+            <li>Rich Text (.rtf)</li>
           </ul>
         </div>
 
         <div className="format-category">
-          <h4>📊 Presentations & Spreadsheets</h4>
+          <h4>Presentations &amp; Spreadsheets</h4>
           <ul className="format-list">
-            <li className="format-item">PowerPoint (.pptx)</li>
-            <li className="format-item">Excel files (.xlsx)</li>
-            <li className="format-item">CSV files (.csv)</li>
+            <li>PowerPoint (.pptx)</li>
+            <li>Excel files (.xlsx)</li>
+            <li>CSV files (.csv)</li>
           </ul>
         </div>
 
         <div className="format-category">
-          <h4>🌐 Web & Data</h4>
+          <h4>Web &amp; Data</h4>
           <ul className="format-list">
-            <li className="format-item">HTML files (.html)</li>
-            <li className="format-item">JSON files (.json)</li>
-            <li className="format-item">XML files (.xml)</li>
+            <li>HTML files (.html)</li>
+            <li>JSON files (.json)</li>
+            <li>XML files (.xml)</li>
           </ul>
         </div>
 
         <div className="format-category">
-          <h4>🖼️ Images & Media</h4>
+          <h4>Images &amp; Media</h4>
           <ul className="format-list">
-            <li className="format-item">PNG, JPG images</li>
-            <li className="format-item">Audio files (.wav, .mp3)</li>
-            <li className="format-item">OCR text extraction</li>
+            <li>PNG, JPG images</li>
+            <li>Audio files (.wav, .mp3)</li>
+            <li>OCR text extraction</li>
           </ul>
         </div>
       </div>
 
       <div className="supported-tip">
-        <p>
-          Powered by Microsoft MarkItDown with AI-enhanced conversion for better formatting preservation
-        </p>
+        Powered by Microsoft MarkItDown with AI-enhanced conversion
+        for better formatting preservation.
       </div>
     </div>
   );

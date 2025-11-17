@@ -1,126 +1,87 @@
-.file-list {
-  margin-bottom: 20px;
+/* FileList.css */
+
+.filelist-section {
+  margin-top: 24px;
+}
+
+.filelist-card {
+  max-width: 640px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+  padding: 16px 18px;
+  text-align: left;
 }
 
 .file-list-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
-.file-list h4 {
+.file-list-header h4 {
   margin: 0;
-  color: #374151;
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.file-list h4::before {
-  content: '📋';
-  font-size: 1rem;
 }
 
 .clear-all-btn {
-  background: #ef4444 !important;
-  padding: 6px 12px !important;
-  font-size: 0.8rem !important;
-  border-radius: 6px !important;
-}
-
-.clear-all-btn:hover {
-  background: #dc2626 !important;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  color: #3b82f6;
+  cursor: pointer;
 }
 
 .selected-files {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 8px;
-  max-height: 200px;
-  overflow-y: auto;
 }
 
 .file-item {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 8px 12px;
-  background: white;
-  border-radius: 8px;
-  border: 1px solid #e2e8f0;
-  transition: all 0.2s ease;
-}
-
-.file-item:hover {
-  transform: translateX(2px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  padding: 6px 0;
 }
 
 .file-info {
   display: flex;
   align-items: center;
-  gap: 8px;
-  flex: 1;
-  min-width: 0;
+  gap: 10px;
 }
 
 .file-icon {
-  font-size: 1.2rem;
-  flex-shrink: 0;
+  font-size: 20px;
 }
 
 .file-details {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  min-width: 0;
 }
 
 .file-name {
+  font-size: 13px;
   font-weight: 500;
-  color: #1e293b;
-  font-size: 0.85rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .file-size {
-  font-size: 0.75rem;
-  color: #64748b;
-}
-
-.file-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-}
-
-.file-status {
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 0.7rem;
-  font-weight: 500;
-  background: #dcfce7;
-  color: #166534;
+  font-size: 12px;
+  color: #6b7280;
 }
 
 .remove-file-btn {
-  background: #f87171 !important;
-  padding: 4px 6px !important;
-  font-size: 0.7rem !important;
-  border-radius: 4px !important;
-  min-width: auto !important;
-  width: 20px !important;
-  height: 20px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  color: #9ca3af;
 }
 
 .remove-file-btn:hover {
-  background: #ef4444 !important;
+  color: #ef4444;
 }

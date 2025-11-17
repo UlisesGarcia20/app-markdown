@@ -12,14 +12,14 @@ interface UploadAreaProps {
   onNewConversion: () => void;
 }
 
-export const UploadArea = ({ 
-  onFilesSelected, 
-  onSubmit, 
-  isUploading, 
-  progress, 
-  selectedFiles, 
-  showSuccess, 
-  downloadedFileName, 
+export const UploadArea = ({
+  onFilesSelected,
+  onSubmit,
+  isUploading,
+  progress,
+  selectedFiles,
+  showSuccess,
+  downloadedFileName,
   onNewConversion
 }: UploadAreaProps) => {
   const [isDragOver, setIsDragOver] = useState(false);
@@ -59,23 +59,23 @@ export const UploadArea = ({
 
   const getButtonText = () => {
     if (isUploading) return 'Converting...';
-    if (selectedFiles.length === 0) return 'Select files to convert';
+    if (selectedFiles.length === 0) return 'Drop your PDF or browse';
     if (selectedFiles.length === 1) return 'Convert file';
     return `Convert ${selectedFiles.length} files`;
   };
 
   if (showSuccess) {
     return (
-      <div className="upload-area success-state">
-        <div className="upload-content">
+      <div className="upload-card success-state">
+        <div className="upload-card-inner">
           <span className="success-icon">✅</span>
           <div className="success-text">Conversion Successful!</div>
           <div className="success-subtext">
             Your file "{downloadedFileName}" has been downloaded
           </div>
-          <button 
-            type="button" 
-            className="new-conversion-btn"
+          <button
+            type="button"
+            className="primary-btn"
             onClick={onNewConversion}
           >
             Convert New Files
@@ -87,36 +87,50 @@ export const UploadArea = ({
 
   return (
     <form onSubmit={handleSubmit}>
-      <div 
-        className={`upload-area ${isDragOver ? 'dragover' : ''}`}
+      <div
+        className={`upload-card ${isDragOver ? 'is-dragover' : ''}`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
+        onClick={() => fileInputRef.current?.click()}
       >
-        <div className="upload-content">
-          <span className="upload-icon">📁</span>
-          <div className="upload-text">
-            {selectedFiles.length > 0 ? `${selectedFiles.length} file(s) selected` : 'Drop files here'}
+        <div className="upload-card-inner">
+          <div className="upload-icon-wrapper">
+            <span className="upload-icon">⬆️</span>
+          </div>
+
+          <div className="upload-main-text">
+            Drop your PDF here or click to browse
           </div>
           <div className="upload-subtext">
-            or click to browse • PDF, DOCX, PPTX, Images & more
+            {selectedFiles.length > 0
+              ? `${selectedFiles.length} file(s) selected`
+              : 'Supports PDF, DOCX, PPTX, Images & more'}
           </div>
-          
-          <input 
-            type="file" 
-            multiple 
-            required 
+
+          <input
+            type="file"
+            multiple
+            required
             ref={fileInputRef}
             onChange={handleFileChange}
+            className="upload-input-hidden"
           />
-          
+
           {isUploading && (
             <div className="progress">
-              <div className="progress-bar" style={{ width: `${progress}%` }}></div>
+              <div
+                className="progress-bar"
+                style={{ width: `${progress}%` }}
+              ></div>
             </div>
           )}
-          
-          <button type="submit" disabled={isUploading || selectedFiles.length === 0}>
+
+          <button
+            type="submit"
+            className="primary-btn"
+            disabled={isUploading || selectedFiles.length === 0}
+          >
             {getButtonText()}
           </button>
         </div>
