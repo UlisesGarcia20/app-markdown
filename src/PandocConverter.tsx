@@ -102,28 +102,24 @@ const PandocConverter = () => {
 
   return (
     <div style={{ minHeight: '100vh', padding: '20px', boxSizing: 'border-box' }}>
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <h1 style={{ 
-            fontSize: '2.5rem', 
-            lineHeight: '1.2', 
-            marginBottom: '20px',
-            fontWeight: 'bold'
-          }}>
-            Convert Markdown to
-            <br />
-            <span style={{ color: '#213065' }}>Word Document</span>
-          </h1>
+      <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+        <section className="hero">
+                    <button className="hero-pill">
+                        <span className="hero-pill-dot" />
+                        Free &amp; Secure Conversion
+                    </button>
 
-          <p style={{ 
-            fontSize: '1.1rem', 
-            color: '#666', 
-            marginBottom: '0' 
-          }}>
-            Transform your markdown files into professional Word documents instantly.
-          </p>
-        </div>
+                    <h1 className="hero-title">
+                        Transform Documents into
+                        <br />
+                        <span className="hero-title-highlight">Word Document</span>
+                    </h1>
 
+                    <p className="hero-subtitle">
+                                    Transform your markdown files into professional Word documents instantly.
+
+                    </p>
+                </section>
         <div style={{ marginBottom: '40px' }}>
           {showSuccess ? (
             <div style={{ 

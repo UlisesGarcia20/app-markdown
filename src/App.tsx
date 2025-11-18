@@ -1,5 +1,4 @@
 import "./App.css";
-import { Header } from "./components/Header/Header";
 import { UploadArea } from "./components/UploadArea/UploadArea";
 import { useFileUpload } from "./hooks/useFileUpload";
 
