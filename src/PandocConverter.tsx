@@ -55,7 +55,7 @@ const PandocConverter = () => {
       const formData = new FormData();
       formData.append('file', selectedFile);
 
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}md-to-word`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/md-to-word`, {
         method: 'POST',
         body: formData,
       });
