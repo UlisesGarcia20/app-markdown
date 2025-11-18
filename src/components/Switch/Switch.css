@@ -1,0 +1,50 @@
+.switch-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.switch-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: #6b7280;
+  transition: color 0.2s;
+}
+
+.switch-label.active {
+  color: #f06210;
+}
+
+.switch {
+  position: relative;
+  width: 60px;
+  height: 32px;
+  background: #e5e7eb;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  padding: 0;
+}
+
+.switch.checked {
+  background: #f06210;
+}
+
+.switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 28px;
+  height: 28px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.switch.checked .switch-thumb {
+  transform: translateX(28px);
+}
