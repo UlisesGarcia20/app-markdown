@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react';
-import Swal from 'sweetalert2';
 import './App.css';
 
 const PandocConverter = () => {
